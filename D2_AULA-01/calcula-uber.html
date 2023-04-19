@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input placeholder="Distância em KM" id="campodistanciaemkm" />
+    <input placeholder="Tempo em minutos" id="campotempoemminutos" />
+    <button onclick="calculacorrida()">Calcular</button>
+
+    <script>
+      function formatamoeda(algumvalor) {
+        var valorFormatado = algumvalor.toFixed(2).replace(".", ",");
+        return valorFormatado;
+      }
+
+      function calculacorrida() {
+        // [PROCESSAMENTO]
+        //Valida na entrada / Fail Fast Validations
+
+        //Se tiver a distânciaemkm, segue o código
+        // se não, para por aqui
+        var isCampoDistanciaVazio = campodistanciaemkm.value == "";
+        if (isCampoDistanciaVazio) {
+          alert("Não temos o valor da distância.");
+          return;
+        }
+
+        var tarifadinamica = 1.4;
+        var distanciaemkm = campodistanciaemkm.value * tarifadinamica;
+        var tempoemmin = campotempoemminutos.value * 0.26;
+        var valordacorrida = distanciaemkm + tempoemmin;
+        alert("O valor da corrida é R$ " + formatamoeda(valordacorrida));
+      }
+    </script>
+  </body>
+</html>
